@@ -1,0 +1,46 @@
+html, body{
+    margin:0;
+    height:auto;
+    background: -webkit-linear-gradient(to bottom,#22e8f4,#253fa7);
+    background: linear-gradient(to bottom,#22e8f4,#253fa7); 
+}
+body{
+    position: relative;
+}
+header,footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: -webkit-linear-gradient(to bottom,#d122f4,#a72525);
+    background: linear-gradient(to bottom,#f42222,#a72525); 
+}
+header h1{ margin:5}
+footer span{margin:3}
+#body{
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 87%;
+    border:2px solid white;
+}
+footer{
+    position: absolute;
+    width: 100%;
+    margin:0;
+    bottom: 0;
+}
+
+#InputFile{
+    margin-top: 5px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+#InputFile input{min-width: 25%;}
+#atributes{display: flex; width: 100%;}
+#DataTable{width: fit-content; display: flex;  margin:auto; max-height: 85%; justify-content: center; overflow: auto;}
+#table, #table th, #table tr, #table td{
+    background-color: aquamarine; 
+    overflow: auto; 
+    font-size: small; 
+    border: 1px solid grey;}
