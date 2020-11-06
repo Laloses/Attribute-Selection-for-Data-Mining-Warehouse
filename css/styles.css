@@ -1,10 +1,11 @@
-html, body{
+html{
     margin:0;
-    height:auto;
     background: -webkit-linear-gradient(to bottom,#22e8f4,#253fa7);
     background: linear-gradient(to bottom,#22e8f4,#253fa7); 
 }
 body{
+    margin: 0;
+    min-height: 100%;
     position: relative;
 }
 header,footer{
@@ -15,32 +16,87 @@ header,footer{
     background: -webkit-linear-gradient(to bottom,#d122f4,#a72525);
     background: linear-gradient(to bottom,#f42222,#a72525); 
 }
+footer{
+    margin-top: 10px;
+    width: 100%;
+    bottom: 0;
+}
 header h1{ margin:5}
 footer span{margin:3}
 #body{
     margin-left: 5%;
     margin-right: 5%;
-    height: 87%;
-    border:2px solid white;
-}
-footer{
-    position: absolute;
-    width: 100%;
-    margin:0;
-    bottom: 0;
+    min-height: 87%;
+    border-left:2px solid white;
+    border-right:2px solid white;
 }
 
 #InputFile{
-    margin-top: 5px;
+    margin-top: 10px;
     display: flex;
     width: 100%;
     justify-content: center;
 }
 #InputFile input{min-width: 25%;}
-#atributes{display: flex; width: 100%;}
-#DataTable{width: fit-content; display: flex;  margin:auto; max-height: 85%; justify-content: center; overflow: auto;}
+#SelectColumns{
+    margin: 0;
+}
+#atributes{
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: wheat;
+    border: 1px solid grey;
+    padding: 5px;
+    display: flex; 
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+#atributes div{
+    margin: 2px;
+    border-radius: 5%;
+    border-style: ridge;
+    border: 2px solid grey;
+    text-align: center;
+    color: wheat;
+}
+.attribute-red{
+    background-color: red;
+}
+.attribute-green{
+    background-color: green;
+}
+#DataTable{
+    width: fit-content; 
+    display: flex;  
+    margin:auto; 
+    max-height: 85%; 
+    justify-content: center; 
+    overflow: auto;
+    margin-bottom: 10px;
+}
 #table, #table th, #table tr, #table td{
     background-color: aquamarine; 
     overflow: auto; 
     font-size: small; 
-    border: 1px solid grey;}
+    border: 1px solid grey;
+}
+#selectionMethod{
+    width: 100%;
+    text-align: center;
+}
+#selectionMethod h2{
+    color: white;
+    margin: auto;
+    padding-bottom: 5px;
+    width: fit-content;
+    text-decoration: underline;
+    border-radius: 5%;
+    background-color: grey;
+    opacity: 0.9;
+}
+#selectionMethod div{
+    display: flex;
+    justify-content: space-around;
+}
