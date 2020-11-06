@@ -34,6 +34,7 @@ async function parseData(data){
     generateAtributes(divAtributes, ingresedAtributes);
     selectAtributes(ingresedAtributes);
     generateTable(table, csvData);
+    csvData = csvData.slice(1,csvData.lenght) //Se le quitan los headers
 }
 
 function Loading(bool){
@@ -60,9 +61,35 @@ function selectAtributes(atributes){
 
 function chiSquared(){
     let attNominales = searchNominalAttributes();
+    putChiSquaredAtributeOptions(attNominales);
 }
 
 function searchNominalAttributes(){
+    let i=0;
+    let nominalAtts=[]
+    ingresedAtributes.forEach(element =>{
+        let exampleData =  parseFloat(csvData[1][i])
+        if(isNaN(exampleData)){
+            nominalAtts.push(element);
+        }
+        i++;
+    })
+    return nominalAtts;
+}
 
+function putChiSquaredAtributeOptions(atributos){
+    let containerSelect = document.querySelector("#selectAtributeOptions")
+    atributos.forEach(nomAtt => {
+        let option = document.createElement("option")
+        option.text = nomAtt;
+        option.setAttribute("value",nomAtt)
+        containerSelect.add(option)
+
+        option.addEventListener("click", function() {
+            let containterSelected = document.querySelector("#containterSelectedAtributesChi")
+            containterSelected.innerHTML = "<span>"+ nomAtt + "</span>";
+            option.parentNode.removeChild(option);
+        })
+    })
 }
 

@@ -12,7 +12,7 @@ function generateTable(table, data) {
   });
 
   //Contenido
-  for (let element of data) {
+  for (let element of data.slice(1,data.lenght)) {
     let row = table.insertRow();
     for (key in element) {
       let cell = row.insertCell();
