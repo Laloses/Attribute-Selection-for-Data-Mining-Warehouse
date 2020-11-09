@@ -2,8 +2,8 @@
 function searchNominalAttributes(){
     let i=0;
     let nominalAtts=[]
-    ingresedAtributes.forEach(element =>{
-        let exampleData =  parseFloat(csvData[1][i])
+    INGRESED_ATRIBUTES.forEach(element =>{
+        let exampleData =  parseFloat(CSV_DATA[1][i])
         if(isNaN(exampleData)){
             nominalAtts.push(element);
         }
@@ -25,40 +25,28 @@ async function generateAtributes(div, headers) {
     });
 }
 
-function getPosHeader(headers){
-    let posHeaders = [];
-    let attsIngresed = ingresedAtributes.map(att => att.trim())
-    headers.forEach(header => {
-        posHeaders.push( attsIngresed.indexOf(header) )
-    });
-    posHeaders.sort()
-    return posHeaders;
-}
-
 async function atributeSelected(option, loading){
     loading(true); let flag = true
-    let countHijos = DIVATRIBUTES.querySelectorAll(".attribute-green").length
+    let countHijos = DIV_ATRIBUTES.querySelectorAll(".attribute-green").length
     if(countHijos < 2){
         let id = "att-"+ option.text.replaceAll(" ","_")
-        DIVATRIBUTES.querySelector("#"+id).classList.replace("attribute-red", "attribute-green")
+        DIV_ATRIBUTES.querySelector("#"+id).classList.replace("attribute-red", "attribute-green")
         option.parentNode.removeChild(option);
     }
     if(countHijos==2){
-        DIVATRIBUTES.style.borderColor="red"
+        DIV_ATRIBUTES.style.borderColor="red"
         alert("Sólo se pueden seleccionar 2 atributos")
         flag = false
         loading(false)
     }
     
-    let attSel = DIVATRIBUTES.querySelectorAll("div.attribute-green")
-    let attNominales = []
-    attSel.forEach(att =>{
-        attNominales.push(att.textContent)
-    })
+    let attSel = DIV_ATRIBUTES.querySelectorAll("div.attribute-green")
+    let listAtt = []
+    attSel.forEach(att => listAtt.push( att.textContent) )
 
     if(flag)
         setTimeout(() => {
-            updateTable(attNominales);
+            updateTable(listAtt);
             loading(false)
         }, 500);
 }

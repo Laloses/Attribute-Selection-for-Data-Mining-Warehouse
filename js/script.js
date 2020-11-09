@@ -1,7 +1,7 @@
 const TABLE = document.querySelector("#table");
-const DIVATRIBUTES = document.querySelector("#atributes");
-let ingresedAtributes = []; //headers
-let csvData=[];
+const DIV_ATRIBUTES = document.querySelector("#atributes");
+let INGRESED_ATRIBUTES = []; //headers
+let CSV_DATA=[];
 
 async function readFile(input, loading) {
     loading(true)
@@ -25,15 +25,16 @@ async function readFile(input, loading) {
 async function parseData(data){
     let lbreak = data.split("\n");
     lbreak.forEach(res => {
-        csvData.push(res.split(","));
+        if(res.length > 0) //Si no es una linea vacía
+            CSV_DATA.push(res.split(","));
     });
-    ingresedAtributes = csvData[0];
-    ingresedAtributes = ingresedAtributes.map(att => att.trim())
+    INGRESED_ATRIBUTES = CSV_DATA[0].map(att => att.trim())
 
-    generateAtributes(DIVATRIBUTES, ingresedAtributes);
-    selectAtributes(ingresedAtributes);
-    generateTable(TABLE, csvData);
-    //csvData = csvData.slice(1,csvData.lenght) //Se le quitan los headers
+    generateAtributes(DIV_ATRIBUTES, INGRESED_ATRIBUTES);
+    selectAtributes(INGRESED_ATRIBUTES);
+    generateTable(TABLE, CSV_DATA);
+    //CSV_DATA = CSV_DATA.slice(1,CSV_DATA.lenght) //Se le quitan los headers
+    console.log(CSV_DATA.length)
 }
 
 function Loading(bool){
@@ -49,7 +50,7 @@ function selectAtributes(atributes){
         let idNoSpace = element.replaceAll(" ","_")
         let att = document.querySelector("#att-"+idNoSpace);
 
-        if(ingresedAtributes.includes(element)){
+        if(INGRESED_ATRIBUTES.includes(element)){
             att.classList.replace("attribute-red", "attribute-green")
         }
         else{
@@ -61,7 +62,7 @@ function selectAtributes(atributes){
 function chiSquared(){
     let attNominales = searchNominalAttributes();
     putChiSquaredAtributeOptions(attNominales);
-    let attsSelected = DIVATRIBUTES.querySelectorAll("div")
+    let attsSelected = DIV_ATRIBUTES.querySelectorAll("div")
     attsSelected.forEach(att => att.classList.replace("attribute-green","attribute-red") )
 }
 

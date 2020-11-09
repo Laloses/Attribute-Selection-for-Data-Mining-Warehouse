@@ -24,16 +24,28 @@ function generateTable(table, data) {
 }
 
 async function updateTable(headers){
-  let posHeaders = getPosHeader(headers)
   let tempData = [];
-  csvData.forEach(line => {
+  let posHeaders = getPosHeader(headers)
+
+  for(let line of CSV_DATA){
+    if(line){
       let newLine = []
       posHeaders.forEach(pos =>{
           newLine.push(line[pos])
       })
       tempData.push(newLine)
-  });
-  console.log(tempData)
+      console.log(newLine)
+    }
+  };
   generateTable(TABLE,tempData)
+}
+
+function getPosHeader(headers){
+  let posHeaders = [];
+  headers.forEach(header => {
+      posHeaders.push( INGRESED_ATRIBUTES.indexOf(header) )
+  });
+  posHeaders.sort()
+  return posHeaders;
 }
   
