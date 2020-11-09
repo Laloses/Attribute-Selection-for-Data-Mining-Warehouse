@@ -22,7 +22,7 @@ footer{
     bottom: 0;
 }
 header h1{ margin:5}
-footer span{margin:3}
+footer span, footer a{display: flex; margin-top:1; align-items: center; text-decoration: none; color: white; }
 #body{
     margin-left: 5%;
     margin-right: 5%;
@@ -104,4 +104,22 @@ footer span{margin:3}
     display: flex;
     margin-top: 10px;
     justify-content: center;
+}
+#containterSelectedAtributesChi{
+    min-width: 10%;
+    width: fit-content;
+    margin: auto;
+    display: block;
+    border: 2px white solid;
+}
+#selectAtributeOptions option[value]{
+    background-color: green;
+    color: white;
+}
+
+#containterSelectedAtributesChi span{
+    padding: 2px;
+    background-color: green;
+    margin: 3px;
+    color: wheat;
 }

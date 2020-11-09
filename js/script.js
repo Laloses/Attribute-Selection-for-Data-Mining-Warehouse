@@ -62,6 +62,7 @@ function selectAtributes(atributes){
 function chiSquared(){
     let attNominales = searchNominalAttributes();
     putChiSquaredAtributeOptions(attNominales);
+    updateTable(attNominales);
 }
 
 function searchNominalAttributes(){
@@ -79,17 +80,22 @@ function searchNominalAttributes(){
 
 function putChiSquaredAtributeOptions(atributos){
     let containerSelect = document.querySelector("#selectAtributeOptions")
+    containerSelect.innerHTML = "<option>Atributos</option>"
     atributos.forEach(nomAtt => {
         let option = document.createElement("option")
         option.text = nomAtt;
         option.setAttribute("value",nomAtt)
         containerSelect.add(option)
-
-        option.addEventListener("click", function() {
-            let containterSelected = document.querySelector("#containterSelectedAtributesChi")
-            containterSelected.innerHTML = "<span>"+ nomAtt + "</span>";
-            option.parentNode.removeChild(option);
-        })
     })
 }
 
+function atributeSelected(option){
+    console.log(option)
+    let containterSelected = document.querySelector("#containterSelectedAtributesChi")
+    containterSelected.innerHTML += "<span>"+ option.text + "</span>";
+    option.parentNode.removeChild(option);
+}
+
+function updateTable(headers){
+
+}

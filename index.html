@@ -45,10 +45,12 @@
                 <div id="resChi">
                     <div>
                         <span>Selecciona 2 atributos a comparar: &ThickSpace;</span>
-                        <select id="selectAtributeOptions"></select>
-                        <div id="containterSelectedAtributesChi"></div>
+                        <select id="selectAtributeOptions" onchange="atributeSelected(this.options[this.selectedIndex])">
+                        </select>
                     </div>
                 </div>
+                <div id="containterSelectedAtributesChi"></div>
+                
             </div>
             <br><br>
             <div id="DataTable">
@@ -57,15 +59,15 @@
             </div>
         </section>
         <footer>
-            <span>
-                Laloses
-            </span>
-            <a href="https://github.com/Laloses/Attribute-Selection-for-Data-Mining-Warehouse">
+            <a href="https://github.com/Laloses/Attribute-Selection-for-Data-Mining-Warehouse" >
+                <span>
+                    Laloses
+                </span>
                 <img src="https://www.flaticon.com/svg/static/icons/svg/2111/2111425.svg" alt="gitHub icon" width="30" height="30">
+                <span >
+                    2020 &copy;
+                </span>
             </a>
-            <span>
-                2020 &copy;
-            </span>
         </footer>
     </body>
     <script src="js/script.js"></script>
