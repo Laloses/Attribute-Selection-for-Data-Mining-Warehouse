@@ -121,5 +121,6 @@ footer span, footer a{display: flex; margin-top:1; align-items: center; text-dec
     padding: 2px;
     background-color: green;
     margin: 3px;
+    margin-top: 10px;
     color: wheat;
 }

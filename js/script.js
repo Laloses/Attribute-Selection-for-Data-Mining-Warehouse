@@ -90,10 +90,15 @@ function putChiSquaredAtributeOptions(atributos){
 }
 
 function atributeSelected(option){
-    console.log(option)
     let containterSelected = document.querySelector("#containterSelectedAtributesChi")
-    containterSelected.innerHTML += "<span>"+ option.text + "</span>";
-    option.parentNode.removeChild(option);
+    let countHijos = containterSelected.childElementCount
+    if(countHijos < 2){
+        containterSelected.innerHTML += "<span>"+ option.text + "</span>";
+        option.parentNode.removeChild(option);
+    }
+    if(countHijos==2){
+        document.getElementById("containterSelectedAtributesChi").style.borderColor="red"
+    }
 }
 
 function updateTable(headers){
