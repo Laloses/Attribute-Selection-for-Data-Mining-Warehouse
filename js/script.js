@@ -1,10 +1,12 @@
-let csvFile = {
-    size:0,
-    dataFile:[]
-};
+const TABLE = document.querySelector("#table");
+const DIVATRIBUTES = document.querySelector("#atributes");
+let ingresedAtributes = []; //headers
 let csvData=[];
 
-async function readFile(input, callback) {
+async function readFile(input, loading) {
+    loading(true)
+    let csvFile = {size:0,dataFile:[]}
+
     if (input.files && input.files[0]) {
         let reader = new FileReader();
         reader.readAsBinaryString(input.files[0]);
@@ -14,15 +16,11 @@ async function readFile(input, callback) {
             //console.log(csvFile.dataFile)
             parseData(csvFile.dataFile)
             setTimeout(() => {
-                callback(false)
+                loading(false)
             }, 500); 
         }
     }
 }
-
-const table = document.querySelector("#table");
-const divAtributes = document.querySelector("#atributes");
-let ingresedAtributes = [];
 
 async function parseData(data){
     let lbreak = data.split("\n");
@@ -30,11 +28,12 @@ async function parseData(data){
         csvData.push(res.split(","));
     });
     ingresedAtributes = csvData[0];
+    ingresedAtributes = ingresedAtributes.map(att => att.trim())
 
-    generateAtributes(divAtributes, ingresedAtributes);
+    generateAtributes(DIVATRIBUTES, ingresedAtributes);
     selectAtributes(ingresedAtributes);
-    generateTable(table, csvData);
-    csvData = csvData.slice(1,csvData.lenght) //Se le quitan los headers
+    generateTable(TABLE, csvData);
+    //csvData = csvData.slice(1,csvData.lenght) //Se le quitan los headers
 }
 
 function Loading(bool){
@@ -47,7 +46,7 @@ function Loading(bool){
 
 function selectAtributes(atributes){
     atributes.forEach(element => {
-        let idNoSpace = element.trim().replaceAll(" ","_")
+        let idNoSpace = element.replaceAll(" ","_")
         let att = document.querySelector("#att-"+idNoSpace);
 
         if(ingresedAtributes.includes(element)){
@@ -62,20 +61,8 @@ function selectAtributes(atributes){
 function chiSquared(){
     let attNominales = searchNominalAttributes();
     putChiSquaredAtributeOptions(attNominales);
-    updateTable(attNominales);
-}
-
-function searchNominalAttributes(){
-    let i=0;
-    let nominalAtts=[]
-    ingresedAtributes.forEach(element =>{
-        let exampleData =  parseFloat(csvData[1][i])
-        if(isNaN(exampleData)){
-            nominalAtts.push(element);
-        }
-        i++;
-    })
-    return nominalAtts;
+    let attsSelected = DIVATRIBUTES.querySelectorAll("div")
+    attsSelected.forEach(att => att.classList.replace("attribute-green","attribute-red") )
 }
 
 function putChiSquaredAtributeOptions(atributos){
@@ -89,18 +76,3 @@ function putChiSquaredAtributeOptions(atributos){
     })
 }
 
-function atributeSelected(option){
-    let containterSelected = document.querySelector("#containterSelectedAtributesChi")
-    let countHijos = containterSelected.childElementCount
-    if(countHijos < 2){
-        containterSelected.innerHTML += "<span>"+ option.text + "</span>";
-        option.parentNode.removeChild(option);
-    }
-    if(countHijos==2){
-        document.getElementById("containterSelectedAtributesChi").style.borderColor="red"
-    }
-}
-
-function updateTable(headers){
-
-}

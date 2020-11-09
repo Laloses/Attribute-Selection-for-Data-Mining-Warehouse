@@ -1,5 +1,6 @@
 
 function generateTable(table, data) {
+  table.innerHTML=""
   //headers
   let thead = table.createTHead();
   let row = thead.insertRow();
@@ -20,5 +21,19 @@ function generateTable(table, data) {
       cell.appendChild(text);
     }
   }
+}
+
+async function updateTable(headers){
+  let posHeaders = getPosHeader(headers)
+  let tempData = [];
+  csvData.forEach(line => {
+      let newLine = []
+      posHeaders.forEach(pos =>{
+          newLine.push(line[pos])
+      })
+      tempData.push(newLine)
+  });
+  console.log(tempData)
+  generateTable(TABLE,tempData)
 }
   

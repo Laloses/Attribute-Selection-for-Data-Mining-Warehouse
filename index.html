@@ -17,7 +17,7 @@
             <div id="loader" class="loader loader-default" data-text></div>
             <div id="InputFile">
                 <span>Leer un archivo: &ThickSpace;</span>
-                <input type="file" id="uploadfile" onChange="readFile(this,Loading);Loading(true)">
+                <input type="file" id="uploadfile" onchange="readFile(this,Loading);">
             </div>
             <br>
             <div id="SelectColumns">
@@ -45,12 +45,10 @@
                 <div id="resChi">
                     <div>
                         <span>Selecciona 2 atributos a comparar: &ThickSpace;</span>
-                        <select id="selectAtributeOptions" onchange="atributeSelected(this.options[this.selectedIndex])">
+                        <select id="selectAtributeOptions" onchange="atributeSelected(this.options[this.selectedIndex],Loading)">
                         </select>
                     </div>
                 </div>
-                <div id="containterSelectedAtributesChi"></div>
-                
             </div>
             <br><br>
             <div id="DataTable">
@@ -71,7 +69,7 @@
         </footer>
     </body>
     <script src="js/script.js"></script>
-    <script src="js/generateAtributes.js"></script>
-    <script src="js/generateTable.js"></script>
+    <script src="js/atributes.js"></script>
+    <script src="js/table.js"></script>
     <script></script>
 </html>
