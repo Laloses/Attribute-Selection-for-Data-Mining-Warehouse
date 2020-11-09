@@ -1,5 +1,10 @@
 const TABLE = document.querySelector("#table");
 const DIV_ATRIBUTES = document.querySelector("#atributes");
+const SELECTED_ATRIBUTES = document.querySelector("#SelectColumns");
+const OPCIONES_CHI = document.querySelector("#resChi");
+const BOTON_CHI = document.querySelector("#btn_calcChi");
+const BOTON_FILE = document.querySelector("#InputFile");
+const METODOS = document.querySelector("#selectionMethod");
 let INGRESED_ATRIBUTES = []; //headers
 let CSV_DATA=[];
 
@@ -33,8 +38,12 @@ async function parseData(data){
     generateAtributes(DIV_ATRIBUTES, INGRESED_ATRIBUTES);
     selectAtributes(INGRESED_ATRIBUTES);
     generateTable(TABLE, CSV_DATA);
-    //CSV_DATA = CSV_DATA.slice(1,CSV_DATA.lenght) //Se le quitan los headers
-    console.log(CSV_DATA.length)
+    SELECTED_ATRIBUTES.classList.remove("hide")
+    METODOS.classList.remove("hide")
+    BOTON_FILE.style.paddingTop = "0%"
+
+    console.log("Datos leídos: " + CSV_DATA.length) //Tamaño de datos leidos
+    console.log("Atributos totales: " + CSV_DATA[0].length) //Tamaño de atributos en la tabla
 }
 
 function Loading(bool){
@@ -64,11 +73,13 @@ function chiSquared(){
     putChiSquaredAtributeOptions(attNominales);
     let attsSelected = DIV_ATRIBUTES.querySelectorAll("div")
     attsSelected.forEach(att => att.classList.replace("attribute-green","attribute-red") )
+    OPCIONES_CHI.classList.remove("hide")
+    BOTON_CHI.classList.remove("hide")
 }
 
 function putChiSquaredAtributeOptions(atributos){
     let containerSelect = document.querySelector("#selectAtributeOptions")
-    containerSelect.innerHTML = "<option>Atributos</option>"
+    containerSelect.innerHTML = "<option>Atributos nominales</option>"
     atributos.forEach(nomAtt => {
         let option = document.createElement("option")
         option.text = nomAtt;

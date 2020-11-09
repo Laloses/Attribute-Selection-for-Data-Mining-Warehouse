@@ -20,14 +20,14 @@
                 <input type="file" id="uploadfile" onchange="readFile(this,Loading);">
             </div>
             <br>
-            <div id="SelectColumns">
+            <div id="SelectColumns" class="hide">
                 <span>&ThickSpace;Estos son los atributos seleccionados: &ThickSpace;</span>
                 <div id="atributes">
                 </div>
             </div>
             <br>
-            <div id="selectionMethod">
-                <h2>
+            <div id="selectionMethod" class="hide">
+                <h2 class="cssButton">
                     Métodos de selecci&oacute;n de atributos
                 </h2>
                 <div>
@@ -42,13 +42,16 @@
                         </button>
                     </div>
                 </div>
-                <div id="resChi">
+                <div id="resChi" class="hide">
                     <div>
                         <span>Selecciona 2 atributos a comparar: &ThickSpace;</span>
                         <select id="selectAtributeOptions" onchange="atributeSelected(this.options[this.selectedIndex],Loading)">
                         </select>
                     </div>
                 </div>
+                <button id="btn_calcChi" class="cssButton mid-button hide" >
+                    <span>Calcular coorrelación</span>
+                </button>
             </div>
             <br><br>
             <div id="DataTable">

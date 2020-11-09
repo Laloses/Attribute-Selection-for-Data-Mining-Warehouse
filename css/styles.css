@@ -16,6 +16,9 @@ header,footer{
     background: -webkit-linear-gradient(to bottom,#d122f4,#a72525);
     background: linear-gradient(to bottom,#f42222,#a72525); 
 }
+.hide{
+    display: none !important;
+}
 footer{
     margin-top: 10px;
     width: 100%;
@@ -34,8 +37,10 @@ footer span, footer a{display: flex; margin-top:1; align-items: center; text-dec
 #InputFile{
     margin-top: 10px;
     display: flex;
+    align-items: center;
     width: 100%;
     justify-content: center;
+    padding-top: 20%;
 }
 #InputFile input{min-width: 25%;}
 #SelectColumns{
@@ -87,22 +92,19 @@ footer span, footer a{display: flex; margin-top:1; align-items: center; text-dec
     text-align: center;
 }
 #selectionMethod h2{
-    color: white;
     margin: auto;
-    padding-bottom: 5px;
-    width: fit-content;
+    padding-bottom: 10px;
     text-decoration: underline;
-    border-radius: 5%;
-    background-color: grey;
-    opacity: 0.9;
+    color: darkslategray;
 }
 #selectionMethod div{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 #resChi{
     display: flex;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
     justify-content: center;
 }
 #containterSelectedAtributesChi{
